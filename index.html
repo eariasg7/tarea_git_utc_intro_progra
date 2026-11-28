@@ -85,6 +85,35 @@
 
         }
 
+
+        /* Estilo de las caritas felices parpadeantes */
+
+        .carita {
+
+            position: absolute;
+            font-size: 2rem;
+            animation: parpadeo 1.5s ease-in-out forwards;
+            pointer-events: none;
+
+        }
+
+
+        @keyframes parpadeo {
+
+            0%, 100% {
+                opacity: 0;
+            }
+
+            15%, 45%, 75% {
+                opacity: 1;
+            }
+
+            30%, 60%, 90% {
+                opacity: 0.1;
+            }
+
+        }
+
         </style>
 
     </head>
@@ -234,6 +263,56 @@
 
 
     setInterval(crearFuego, 500);
+
+
+
+
+    // -------------------------------
+    // Caritas felices parpadeantes
+    // -------------------------------
+
+
+    const emojis = ["😀", "😃", "😄", "😁", "🙂"];
+
+
+    function crearCarita() {
+
+
+        const carita = document.createElement("div");
+
+
+        carita.className = "carita";
+
+
+        carita.innerText =
+            emojis[Math.floor(Math.random() * emojis.length)];
+
+
+        carita.style.left =
+            Math.random() * window.innerWidth + "px";
+
+
+        carita.style.top =
+            Math.random() * window.innerHeight + "px";
+
+
+
+        document.body.appendChild(carita);
+
+
+
+        setTimeout(function() {
+
+            carita.remove();
+
+        }, 1500);
+
+
+    }
+
+
+
+    setInterval(crearCarita, 600);
 
     </script>
 
